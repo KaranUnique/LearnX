@@ -47,14 +47,14 @@ const ROADMAP: {
     id: 5,
     title: "Public paths & sharing",
     desc: "Publish a path, share a link, and let others learn step-by-step.",
-    phase: "In Progress",
+    phase: "Planned",
     tags: ["Community"],
   },
   {
     id: 6,
     title: "Streaks & leaderboard",
     desc: "Daily learning streaks with a friendly leaderboard to encourage consistency.",
-    phase: "Shipped",
+    phase: "Planned",
     tags: ["Gamification"],
   },
 ];
