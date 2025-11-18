@@ -79,6 +79,70 @@ package.json      → dependencies
 
 ---
 
+## How It Works
+
+LearnX transforms any topic into a clear, step-by-step learning path using AI.
+
+**1. Enter a topic**  
+Users can choose a topic (e.g., “DSA”, “React”, “Biology”, “Cooking”) or create their own.
+
+**2. AI generates a structured roadmap**  
+The system breaks the topic into:
+- Modules  
+- Lessons  
+- Small actionable tasks  
+
+**3. Follow the steps**  
+Users complete tasks one by one.
+
+**4. Track progress**  
+Each module shows completion status so learners always know what to do next.
+
+---
+
+## Feature Status
+
+| Feature                              | Status        | Notes |
+|--------------------------------------|--------------|-------|
+| AI-generated learning modules        | ✅ Implemented | Converts any topic into modules & lessons |
+| Progress tracking                    | 🚧 In Progress | Basic structure ready, improvements planned |
+| User-created custom topics           | ✅ Implemented | Works on homepage input field |
+| Learning roadmap UI                  | ✅ Implemented | `/roadmap` page |
+| Save/Continue learning sessions      | 🔜 Planned     | Will require user accounts |
+| User profiles / login system         | 🔜 Planned     | Not yet started |
+| Community-shared learning tracks     | 🔜 Planned     | Future release |
+
+---
+
+## Contribution Opportunities
+
+Want to help improve LearnX? Here are great places to start:
+
+- ✔️ Add new features from the Feature Table  
+- ✔️ Improve UI/UX on the Roadmap page  
+- ✔️ Work on progress tracking logic  
+- ✔️ Write documentation (README, guides, examples)  
+- ✔️ Fix bugs listed in Issues  
+
+Start by checking open issues:  
+👉 **https://github.com/tilakjain619/LearnX/issues**
+
+---
+
+## Learning Flow Diagram (Simple)
+
+```mermaid
+flowchart LR
+A[User enters topic] --> B[AI analyzes topic]
+B --> C[Generate modules]
+C --> D[Generate lessons & tasks]
+D --> E[Display roadmap]
+E --> F[User completes steps]
+F --> G[Progress tracking]
+
+
+---
+
 ## Contributing
 
 PRs and ideas are welcome!
