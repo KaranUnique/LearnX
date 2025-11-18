@@ -8,6 +8,9 @@
 - [Tech Stack](#tech-stack)
 - [Core Pages](#core-pages)
 - [Project Structure](#project-structure)
+- [How It Works](#how-it-works)
+- [Feature Status](#feature-status)
+- [Contribution Opportunities](#contribution-opportunities)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -84,7 +87,7 @@ package.json      → dependencies
 LearnX transforms any topic into a clear, step-by-step learning path using AI.
 
 **1. Enter a topic**  
-Users can choose a topic (e.g., “DSA”, “React”, “Biology”, “Cooking”) or create their own.
+Users can choose a topic (e.g., “DSA”, “React”, “Java”, “Machine Learning”, “Cloud Computing”) or create their own.
 
 **2. AI generates a structured roadmap**  
 The system breaks the topic into:
@@ -133,12 +136,13 @@ Start by checking open issues:
 
 ```mermaid
 flowchart LR
-A[User enters topic] --> B[AI analyzes topic]
-B --> C[Generate modules]
-C --> D[Generate lessons & tasks]
-D --> E[Display roadmap]
-E --> F[User completes steps]
-F --> G[Progress tracking]
+    A[User enters topic] --> B[AI analyzes topic]
+    B --> C[Generate modules]
+    C --> D[Generate lessons & tasks]
+    D --> E[Display roadmap]
+    E --> F[User completes steps]
+    F --> G[Progress tracking]
+```
 
 
 ---
