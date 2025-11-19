@@ -107,13 +107,12 @@ Each module shows completion status so learners always know what to do next.
 
 | Feature                              | Status        | Notes |
 |--------------------------------------|--------------|-------|
-| AI-generated learning modules        | ✅ Implemented | Converts any topic into modules & lessons |
-| Progress tracking                    | 🚧 In Progress | Basic structure ready, improvements planned |
-| User-created custom topics           | ✅ Implemented | Works on homepage input field |
-| Learning roadmap UI                  | ✅ Implemented | `/roadmap` page |
-| Save/Continue learning sessions      | 🔜 Planned     | Will require user accounts |
-| User profiles / login system         | 🔜 Planned     | Not yet started |
-| Community-shared learning tracks     | 🔜 Planned     | Future release |
+| AI topic → auto lessons (v1)         | 🚧 In Progress | Type a topic and generate structured modules & lessons (v1) |
+| Category discovery                   | 🔜 Planned     | Curated categories (Tech, Finance, etc.) |
+| Learning progress tracking           | 🔜 Planned     | Mark lessons done, resume where left off, completion % |
+| Quizzes & mini-assignments           | 🔜 Planned     | Auto-generated checks and instant feedback |
+| Public paths & sharing               | 🔜 Planned     | Publish and share learning paths |
+| Streaks & leaderboard                | 🔜 Planned     | Daily streaks and friendly leaderboard |
 
 ---
 
