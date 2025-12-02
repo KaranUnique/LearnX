@@ -45,7 +45,7 @@ export default function HomePage() {
             v1.0 Public Beta
           </motion.div>
 
-          <motion.h1 variants={itemVariants} className="text-5xl font-bold tracking-tight sm:text-7xl bg-clip-text text-transparent bg-gradient-to-b from-zinc-900 via-zinc-800 to-zinc-500 dark:from-white dark:via-white dark:to-zinc-500 pb-2">
+          <motion.h1 variants={itemVariants} className="font-syne text-5xl font-bold tracking-tight sm:text-7xl bg-clip-text text-transparent bg-gradient-to-b from-zinc-900 via-zinc-800 to-zinc-500 dark:from-white dark:via-white dark:to-zinc-500 pb-2">
             Learn anything. <br />
             <span className="text-zinc-900 dark:text-white">Instantly.</span>
           </motion.h1>
@@ -88,7 +88,7 @@ export default function HomePage() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white mb-4">Why LearnX?</h2>
+          <h2 className="font-space text-3xl font-bold tracking-tight text-zinc-900 dark:text-white mb-4">Why LearnX?</h2>
           <p className="text-zinc-600 dark:text-zinc-500">Everything you need to master your next skill.</p>
         </motion.div>
 
