@@ -28,8 +28,6 @@ export async function GET() {
       { status: 200 }
     );
   } catch (error) {
-    console.error('Error fetching learning path history:', error);
-
     return NextResponse.json(
       {
         success: false,

@@ -55,7 +55,7 @@ export default function LearnPathGenerator() {
         setHistoryRefreshTrigger((prev) => prev + 1);
       }
     } catch (error) {
-      console.error('Regeneration error:', error);
+      // Handle regeneration error silently
     }
   };
 

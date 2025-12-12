@@ -67,14 +67,12 @@ export async function POST(request: NextRequest) {
     try {
       // Use mock data if USE_MOCK_AI is enabled, otherwise use OpenAI
       if (isMockMode()) {
-        console.log('🎭 Using MOCK AI for refinement - No API costs!');
         refinedPathData = await refineWithMock(
           topic,
           previousPath,
           refinement
         );
       } else {
-        console.log('🤖 Using OpenAI API for refinement');
         refinedPathData = await refineWithOpenAI(
           topic,
           refinement,
@@ -82,7 +80,6 @@ export async function POST(request: NextRequest) {
         );
       }
     } catch (aiError) {
-      console.error('AI refinement error:', aiError);
       return NextResponse.json(
         {
           success: false,
@@ -113,7 +110,6 @@ export async function POST(request: NextRequest) {
         { status: 201 }
       );
     } catch (dbError) {
-      console.error('Database error:', dbError);
       return NextResponse.json(
         {
           success: false,
@@ -125,8 +121,6 @@ export async function POST(request: NextRequest) {
       );
     }
   } catch (error) {
-    console.error('Unexpected error:', error);
-
     // Handle JSON parsing errors
     if (error instanceof SyntaxError) {
       return NextResponse.json(

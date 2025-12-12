@@ -53,14 +53,11 @@ export async function POST(request: NextRequest) {
     try {
       // Use mock data if USE_MOCK_AI is enabled, otherwise use OpenAI
       if (isMockMode()) {
-        console.log('🎭 Using MOCK AI - No API costs!');
         learningPathData = await generateWithMock(topic);
       } else {
-        console.log('🤖 Using OpenAI API');
         learningPathData = await generateWithOpenAI(topic);
       }
     } catch (aiError) {
-      console.error('AI generation error:', aiError);
       return NextResponse.json(
         {
           success: false,
@@ -91,7 +88,6 @@ export async function POST(request: NextRequest) {
         { status: 201 }
       );
     } catch (dbError) {
-      console.error('Database error:', dbError);
       return NextResponse.json(
         {
           success: false,
@@ -103,8 +99,6 @@ export async function POST(request: NextRequest) {
       );
     }
   } catch (error) {
-    console.error('Unexpected error:', error);
-
     // Handle JSON parsing errors
     if (error instanceof SyntaxError) {
       return NextResponse.json(
