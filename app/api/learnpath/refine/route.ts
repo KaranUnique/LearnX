@@ -4,6 +4,7 @@ import connectDB from '@/lib/mongodb';
 import LearningPath from '@/models/LearningPath';
 import { generateRefinedLearningPath as refineWithOpenAI } from '@/lib/openai';
 import { generateRefinedLearningPath as refineWithMock, isMockMode } from '@/lib/mock-ai';
+import { checkRateLimit, getClientIdentifier } from '@/lib/rate-limit';
 
 /**
  * Request body validation schema for refining learning paths
@@ -39,6 +40,34 @@ const RefineRequestSchema = z.object({
  */
 export async function POST(request: NextRequest) {
   try {
+    // Check rate limit (5 requests per minute per IP - stricter for refinement)
+    const clientId = getClientIdentifier(request);
+    const rateLimitResult = checkRateLimit(clientId, {
+      maxRequests: 5,
+      windowMs: 60 * 1000, // 1 minute
+    });
+
+    if (!rateLimitResult.allowed) {
+      const resetTime = new Date(rateLimitResult.resetTime).toISOString();
+      return NextResponse.json(
+        {
+          success: false,
+          error: 'Rate limit exceeded',
+          message: `Too many refinement requests. Please try again after ${resetTime}`,
+          retryAfter: Math.ceil((rateLimitResult.resetTime - Date.now()) / 1000),
+        },
+        {
+          status: 429,
+          headers: {
+            'X-RateLimit-Limit': '5',
+            'X-RateLimit-Remaining': '0',
+            'X-RateLimit-Reset': rateLimitResult.resetTime.toString(),
+            'Retry-After': Math.ceil((rateLimitResult.resetTime - Date.now()) / 1000).toString(),
+          },
+        }
+      );
+    }
+
     // Parse and validate request body
     const body = await request.json();
     const validation = RefineRequestSchema.safeParse(body);

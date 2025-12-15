@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { History as HistoryIcon, Loader2, ChevronDown, ChevronUp, Calendar, BookOpen, Trash2 } from 'lucide-react';
+import { History as HistoryIcon, Loader2, ChevronDown, ChevronUp, Calendar, BookOpen } from 'lucide-react';
 
 interface Lesson {
   title: string;

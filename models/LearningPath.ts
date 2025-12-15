@@ -58,7 +58,7 @@ const ModuleSchema = new Schema<IModule>(
       type: [LessonSchema],
       required: true,
       validate: {
-        validator: function (lessons: ILesson[]) {
+        validator: (lessons: ILesson[]) => {
           return lessons.length >= 3 && lessons.length <= 5;
         },
         message: 'Each module must have between 3 and 5 lessons',
@@ -83,7 +83,7 @@ const LearningPathSchema = new Schema<ILearningPath>(
       type: [ModuleSchema],
       required: true,
       validate: {
-        validator: function (modules: IModule[]) {
+        validator: (modules: IModule[]) => {
           return modules.length >= 4 && modules.length <= 7;
         },
         message: 'Learning path must have between 4 and 7 modules',

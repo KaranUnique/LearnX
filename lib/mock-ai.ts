@@ -304,8 +304,7 @@ export async function generateLearningPath(
 export async function generateRefinedLearningPath(
   topic: string,
   previousPath: LearningPathResponse,
-  feedback: string,
-  difficulty: 'beginner' | 'intermediate' | 'advanced' = 'beginner'
+  feedback: string
 ): Promise<LearningPathResponse> {
   
   await new Promise((resolve) => setTimeout(resolve, 500 + Math.random() * 1000));
