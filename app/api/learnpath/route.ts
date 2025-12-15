@@ -4,6 +4,7 @@ import connectDB from '@/lib/mongodb';
 import LearningPath from '@/models/LearningPath';
 import { generateLearningPath as generateWithOpenAI } from '@/lib/openai';
 import { generateLearningPath as generateWithMock, isMockMode } from '@/lib/mock-ai';
+import { checkRateLimit, getClientIdentifier } from '@/lib/rate-limit';
 
 /**
  * Request body validation schema
@@ -25,6 +26,34 @@ const RequestSchema = z.object({
  */
 export async function POST(request: NextRequest) {
   try {
+    // Check rate limit (10 requests per minute per IP)
+    const clientId = getClientIdentifier(request);
+    const rateLimitResult = checkRateLimit(clientId, {
+      maxRequests: 10,
+      windowMs: 60 * 1000, // 1 minute
+    });
+
+    if (!rateLimitResult.allowed) {
+      const resetTime = new Date(rateLimitResult.resetTime).toISOString();
+      return NextResponse.json(
+        {
+          success: false,
+          error: 'Rate limit exceeded',
+          message: `Too many requests. Please try again after ${resetTime}`,
+          retryAfter: Math.ceil((rateLimitResult.resetTime - Date.now()) / 1000),
+        },
+        {
+          status: 429,
+          headers: {
+            'X-RateLimit-Limit': '10',
+            'X-RateLimit-Remaining': '0',
+            'X-RateLimit-Reset': rateLimitResult.resetTime.toString(),
+            'Retry-After': Math.ceil((rateLimitResult.resetTime - Date.now()) / 1000).toString(),
+          },
+        }
+      );
+    }
+
     // Parse and validate request body
     const body = await request.json();
     const validation = RequestSchema.safeParse(body);
